@@ -2,7 +2,7 @@ package ru.netology.javaqa;
 
 public class Radio {
     private int radioStation; // номер радиостанции
-    private int soundVolume; // уровень громкости
+    private int soundVolume; // уровень громкости звука
 
     public int getRadioStation() {
         return radioStation;
