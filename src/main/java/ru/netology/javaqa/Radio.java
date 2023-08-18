@@ -1,23 +1,67 @@
 package ru.netology.javaqa;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Radio {
-    public int radioStation; // номер радиостанции
-    public int soundVolume; // уровень громкости
+    private int radioStation; // номер радиостанции
+    private int soundVolume; // уровень громкости
 
-
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+    public int getRadioStation() {
+        return radioStation;
     }
+
+    public int getSoundVolume() {
+        return soundVolume;
+    }
+
+    public void setSoundVolume(int newSoundVolume) {
+        if (newSoundVolume < 0) {
+            return;
+        }
+        if (newSoundVolume > 100) {
+            soundVolume = 100;
+            return;
+        }
+        soundVolume = newSoundVolume;
+    }
+
+    public void setRadioStation(int newRadioStation) {
+        if (newRadioStation < 0) {
+            return;
+        }
+        if (newRadioStation > 9) {
+            radioStation = 9;
+            return;
+        }
+        radioStation = newRadioStation;
+    }
+
+    public void increaseVolume() {
+        if (soundVolume >= 100) {
+            return;
+        }
+        soundVolume = soundVolume + 1;
+    }
+
+    public void decreaseVolume() {
+        if (soundVolume <= 0) {
+            return;
+        }
+        soundVolume = soundVolume - 1;
+    }
+
+    public void increaseRadioStation() {
+        if (radioStation == 9) {
+            radioStation = 0;
+            return;
+        }
+        radioStation = radioStation + 1;
+    }
+
+    public void decreaseRadioStation() {
+        if (radioStation == 0) {
+            radioStation = 9;
+            return;
+        }
+        radioStation = radioStation - 1;
+    }
+
 }
