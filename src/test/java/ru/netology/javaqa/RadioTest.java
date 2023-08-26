@@ -3,7 +3,7 @@ package ru.netology.javaqa;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-public class RadioTest {git status
+public class RadioTest {
 
     @Test
     public void sholdSetMaxRadioStation() {
