@@ -4,6 +4,23 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class RadioTest {
+
+    @Test
+    public void sholdSetQuantityRadioStation() {
+        Radio service = new Radio(24);
+        int expected = 24;
+        int actual = service.getQuantityRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sholdSetDefaultQuantityRadioStation() {
+        Radio service = new Radio();
+        int expected = 10;
+        int actual = service.getQuantityRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     public void sholdSetSoundVolume() {
         Radio service = new Radio();
@@ -14,10 +31,28 @@ public class RadioTest {
     }
 
     @Test
-    public void sholdSetSoundVolumeUnder() {
+    public void sholdSetSoundVolumeMinUnder() {
         Radio service = new Radio();
         service.setSoundVolume(-1);
         int expected = 0;
+        int actual = service.getSoundVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sholdSetSoundVolumeMin() {
+        Radio service = new Radio();
+        service.setSoundVolume(0);
+        int expected = 0;
+        int actual = service.getSoundVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sholdSetSoundVolumeMinOver() {
+        Radio service = new Radio();
+        service.setSoundVolume(1);
+        int expected = 1;
         int actual = service.getSoundVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -41,6 +76,15 @@ public class RadioTest {
     }
 
     @Test
+    public void sholdSetSoundVolumeMaxUnder() {
+        Radio service = new Radio();
+        service.setSoundVolume(99);
+        int expected = 99;
+        int actual = service.getSoundVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void sholdSetRadioStation() {
         Radio service = new Radio();
         service.setRadioStation(5);
@@ -50,7 +94,7 @@ public class RadioTest {
     }
 
     @Test
-    public void sholdSetRadioStationOver() {
+    public void sholdSetRadioStationMax() {
         Radio service = new Radio();
         service.setRadioStation(10);
         int expected = 9;
@@ -59,7 +103,34 @@ public class RadioTest {
     }
 
     @Test
-    public void sholdSetRadioStationUnder() {
+    public void sholdSetRadioStationMaxUnder() {
+        Radio service = new Radio();
+        service.setRadioStation(9);
+        int expected = 9;
+        int actual = service.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sholdSetRadioStationMaxOver() {
+        Radio service = new Radio();
+        service.setRadioStation(11);
+        int expected = 9;
+        int actual = service.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sholdSetRadioStationMin() {
+        Radio service = new Radio();
+        service.setRadioStation(0);
+        int expected = 0;
+        int actual = service.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sholdSetRadioStationMinUnder() {
         Radio service = new Radio();
         service.setRadioStation(-1);
         int expected = 0;
@@ -68,10 +139,10 @@ public class RadioTest {
     }
 
     @Test
-    public void sholdSetRadioStationMax() {
+    public void sholdSetRadioStationMinOver() {
         Radio service = new Radio();
-        service.setRadioStation(9);
-        int expected = 9;
+        service.setRadioStation(1);
+        int expected = 1;
         int actual = service.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }

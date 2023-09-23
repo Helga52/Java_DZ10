@@ -3,8 +3,24 @@ package ru.netology.javaqa;
 public class Radio {
     private int radioStation; // номер радиостанции
     private int soundVolume; // уровень громкости звука
+    private int quantityRadioStation; // количество радиостанций
+    private int maxRadioStation; // максимальное значение радиостанции
+    private int maxSoundVolume = 100; // максимальное значение звука
+
+    public Radio(int quantityRadioStation) {
+
+        this.quantityRadioStation = quantityRadioStation;
+        this.maxRadioStation = quantityRadioStation - 1;
+    }
+
+    public Radio() {
+
+        this.quantityRadioStation = 10;
+        this.maxRadioStation = 9;
+    }
 
     public int getRadioStation() {
+
         return radioStation;
     }
 
@@ -12,12 +28,16 @@ public class Radio {
         return soundVolume;
     }
 
+    public int getQuantityRadioStation() {
+        return quantityRadioStation;
+    }
+
     public void setSoundVolume(int newSoundVolume) {
         if (newSoundVolume < 0) {
             return;
         }
-        if (newSoundVolume > 100) {
-            soundVolume = 100;
+        if (newSoundVolume > maxSoundVolume) {
+            soundVolume = maxSoundVolume;
             return;
         }
         soundVolume = newSoundVolume;
@@ -27,41 +47,41 @@ public class Radio {
         if (newRadioStation < 0) {
             return;
         }
-        if (newRadioStation > 9) {
-            radioStation = 9;
+        if (newRadioStation >= quantityRadioStation) {
+            radioStation = maxRadioStation;
             return;
         }
         radioStation = newRadioStation;
     }
 
     public void increaseVolume() {
-        if (soundVolume >= 100) {
+        if (soundVolume >= maxSoundVolume) {
             return;
         }
-        soundVolume = soundVolume + 1;
+        soundVolume++;
     }
 
     public void decreaseVolume() {
         if (soundVolume <= 0) {
             return;
         }
-        soundVolume = soundVolume - 1;
+        soundVolume--;
     }
 
     public void increaseRadioStation() {
-        if (radioStation == 9) {
+        if (radioStation == (maxRadioStation)) {
             radioStation = 0;
             return;
         }
-        radioStation = radioStation + 1;
+        radioStation++;
     }
 
     public void decreaseRadioStation() {
         if (radioStation == 0) {
-            radioStation = 9;
+            radioStation = maxRadioStation;
             return;
         }
-        radioStation = radioStation - 1;
+        radioStation--;
     }
 
 }
