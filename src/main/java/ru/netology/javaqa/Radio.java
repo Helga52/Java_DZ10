@@ -3,18 +3,24 @@ package ru.netology.javaqa;
 public class Radio {
     private int radioStation; // номер радиостанции
     private int soundVolume; // уровень громкости звука
-    private int maxRadioStation; // максимальное кол-во радиостанций
+    private int quantityRadioStation; // количество радиостанций
+    private int maxRadioStation; // максимальное значение радиостанции
     private int maxSoundVolume = 100; // максимальное значение звука
 
-    public Radio(int maxRadioStation) {
-        this.maxRadioStation = maxRadioStation;
+    public Radio(int quantityRadioStation) {
+
+        this.quantityRadioStation = quantityRadioStation;
+        this.maxRadioStation = quantityRadioStation - 1;
     }
 
     public Radio() {
-        this.maxRadioStation = 10;
+
+        this.quantityRadioStation = 10;
+        this.maxRadioStation = 9;
     }
 
     public int getRadioStation() {
+
         return radioStation;
     }
 
@@ -22,8 +28,8 @@ public class Radio {
         return soundVolume;
     }
 
-    public int getMaxRadioStation() {
-        return maxRadioStation;
+    public int getQuantityRadioStation() {
+        return quantityRadioStation;
     }
 
     public void setSoundVolume(int newSoundVolume) {
@@ -41,8 +47,8 @@ public class Radio {
         if (newRadioStation < 0) {
             return;
         }
-        if (newRadioStation >= maxRadioStation) {
-            radioStation = maxRadioStation - 1;
+        if (newRadioStation >= quantityRadioStation) {
+            radioStation = maxRadioStation;
             return;
         }
         radioStation = newRadioStation;
@@ -63,7 +69,7 @@ public class Radio {
     }
 
     public void increaseRadioStation() {
-        if (radioStation == (maxRadioStation - 1)) {
+        if (radioStation == (maxRadioStation)) {
             radioStation = 0;
             return;
         }
@@ -72,7 +78,7 @@ public class Radio {
 
     public void decreaseRadioStation() {
         if (radioStation == 0) {
-            radioStation = maxRadioStation - 1;
+            radioStation = maxRadioStation;
             return;
         }
         radioStation--;
